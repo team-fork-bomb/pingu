@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 '''
     Pingu is a ping-like utility for checking server availibility
     Copyright (C) 2015 Morgan Brown, Casey Freeburg, Levi Muniz, and Jason Walker. All rights reserved.
