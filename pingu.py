@@ -29,7 +29,7 @@ args = parser.parse_args()
 def connect(host, port):
 	try:
 		s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-		s.settimeout(5)
+		s.settimeout(args.timeout)
 		s.connect((host, port))
 		s.close()
 		print("\033[32mCan connect to " + args.HOST + " on port " + str(args.PORT)+ "\033[0m")
