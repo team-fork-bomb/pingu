@@ -23,6 +23,7 @@ parser = argparse.ArgumentParser(description="Ping-like utility for checking ser
 parser.add_argument("HOST", help="The host to connect to")
 parser.add_argument("PORT", type=int, help="The port to connect to")
 parser.add_argument("-r", "--repeat", action="store_true", help="Repeat this in a loop")
+parser.add_argument("-t", "--timeout", type=int, default=5, help="Timeout of connection in seconds (default=5)")
 args = parser.parse_args()
 
 def connect(host, port):
