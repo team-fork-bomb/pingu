@@ -31,7 +31,10 @@ def connect(host, port):
 		s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 		s.settimeout(args.timeout)
 		s.connect((host, port))
-		s.close()
+		try:
+			s.close()
+		except:
+			pass
 		print("\033[32mCan connect to " + args.HOST + " on port " + str(args.PORT)+ "\033[0m")
 	except:
 		print("\033[31mCan \033[1mNOT\033[0m\033[31m connect to " + args.HOST + " on port " + str(args.PORT) + "\033[0m")
