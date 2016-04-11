@@ -19,6 +19,8 @@
 
 import argparse, socket, time
 
+count = 0
+
 parser = argparse.ArgumentParser(description="Ping-like utility for checking server availibility.",epilog="Copyright (C) 2015 Morgan Brown, Casey Freeburg, Levi Muniz, and Jason Walker. All rights reserved.")
 parser.add_argument("HOST", help="The host to connect to")
 parser.add_argument("PORT", type=int, help="The port to connect to")
@@ -27,6 +29,7 @@ parser.add_argument("-t", "--timeout", type=float, default=5, help="Timeout of c
 args = parser.parse_args()
 
 def connect(host, port):
+	global count
 	try:
 		s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 		s.settimeout(args.timeout)
@@ -35,9 +38,9 @@ def connect(host, port):
 			s.close()
 		except:
 			pass
-		print("\033[32mCan connect to " + args.HOST + " on port " + str(args.PORT)+ "\033[0m")
+		print("\033[32m#" + str(count) + " Can connect to " + args.HOST + " on port " + str(args.PORT)+ "\033[0m")
 	except:
-		print("\033[31mCan \033[1mNOT\033[0m\033[31m connect to " + args.HOST + " on port " + str(args.PORT) + "\033[0m")
+		print("\033[31m#" + str(count) + " Can \033[1mNOT\033[0m\033[31m connect to " + args.HOST + " on port " + str(args.PORT) + "\033[0m")
 
 if args.repeat:
 	while True:
@@ -50,6 +53,7 @@ if args.repeat:
 			except:
 				pass
 			exit()
+		count += 1
 else:
 	try:
 		connect(args.HOST, args.PORT)
